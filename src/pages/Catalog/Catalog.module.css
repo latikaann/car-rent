@@ -1,0 +1,33 @@
+.cardsContainer {
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 29px;
+
+  scroll-behavior: auto;
+}
+
+.loadMoreBtn {
+  padding: 10px;
+
+  display: block;
+  margin: auto;
+  background-color: transparent;
+  border: none;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  text-decoration: underline;
+
+  user-select: none;
+
+  color: var(--blue-color);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.loadMoreBtn:hover {
+  color: var(--blue-color-hover);
+  transform: scale(1.3);
+}
