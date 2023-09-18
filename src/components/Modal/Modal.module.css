@@ -1,0 +1,164 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--grey-transparent-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContainer {
+  position: relative;
+  width: 541px;
+  min-height: 752px;
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  padding: 0;
+  background-color: transparent;
+  border: none;
+}
+
+.closeBtn:hover,
+.closeBtn:focus {
+  transform: scale(1.2);
+  fill: var(--blue-color-hover);
+}
+
+.imageWrapper {
+  margin-bottom: 14px;
+  width: 461px;
+  height: 248px;
+
+  border-radius: 14px;
+
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.modalTitle {
+  margin-bottom: 8px;
+
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.titleBlue {
+  color: var(--blue-color);
+}
+
+.firstTextBlock {
+  margin-bottom: 24px;
+}
+
+.greyList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.greyItems {
+  display: flex;
+
+  gap: 12px;
+
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.greyItems p {
+  position: relative;
+  color: var(--grey-transparent-color);
+}
+
+.greyItems p:not(:first-child)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -6px;
+  height: 100%;
+  width: 1px;
+  background-color: rgba(18, 20, 23, 0.1);
+}
+
+.firstSubtitle {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+.subtitle {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.43;
+}
+
+.secondTextBlock {
+  margin-bottom: 24px;
+}
+
+.thirdBlockList {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  font-family: var(--secondary-font);
+  font-size: 12px;
+  line-height: 1.5;
+
+  color: rgba(54, 53, 53, 1);
+}
+
+.thirdBlockList li {
+  padding: 7px 14px;
+  background-color: rgba(249, 249, 249, 1);
+  border-radius: 35px;
+}
+
+.thirdBlockList span {
+  font-weight: 600;
+  color: var(--blue-color);
+}
+
+.rentBtn {
+  margin-top: 24px;
+
+  width: 168px;
+  height: 44px;
+
+  border-radius: 12px;
+
+  color: var(--white-color);
+  background-color: var(--blue-color);
+  border-color: transparent;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.43;
+
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.rentBtn:hover,
+.rentBtn:focus {
+  background-color: var(--blue-color-hover);
+  transform: scale(1.01);
+}

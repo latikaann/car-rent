@@ -1,0 +1,41 @@
+.headerContainer {
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 50px;
+  border-bottom: 2px solid var(--blue-color);
+}
+
+.headerNav {
+  display: flex;
+  gap: 30px;
+}
+
+.link {
+  padding: 12px 15px;
+  display: block;
+  border-radius: 10px;
+
+  font-weight: 600;
+}
+
+.contactsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contactsList a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  color: var(--primary-color);
+}
+
+.contactsList a:hover,
+.contactsList a:focus {
+  color: var(--blue-color-hover);
+}
