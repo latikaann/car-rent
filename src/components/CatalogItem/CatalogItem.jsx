@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import css from "./CatalogItem.module.css";
-import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-import Modal from "../Modal/Modal";
+import React, { useState } from 'react';
+import css from './CatalogItem.module.css';
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Modal from '../Modal/Modal';
 
 const CatalogItem = ({ advert }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +19,7 @@ const CatalogItem = ({ advert }) => {
     id,
   } = advert;
 
-  const parts = address.split(",");
+  const parts = address.split(',');
   const city = parts[1].trim();
   const country = parts[2].trim();
 
