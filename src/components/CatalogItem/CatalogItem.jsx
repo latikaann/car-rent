@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
 import css from './CatalogItem.module.css';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
+import Favorite from '@mui/icons-material/Favorite';
 import Modal from '../Modal/Modal';
 
-const CatalogItem = ({ advert }) => {
+const CatalogItem = ({
+  advert,
+  toggleFavoriteHandler,
+  isFavorite,
+  removeFromFavorites,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleFavorite = () => {
+    toggleFavoriteHandler(advert);
+    if (isFavorite) {
+      removeFromFavorites(advert);
+    }
+  };
 
   const {
     make,
@@ -20,8 +33,8 @@ const CatalogItem = ({ advert }) => {
   } = advert;
 
   const parts = address.split(',');
-  const city = parts[1].trim();
-  const country = parts[2].trim();
+  const city = parts[1] ? parts[1].trim() : '';
+  const country = parts[2] ? parts[2].trim() : '';
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -37,8 +50,16 @@ const CatalogItem = ({ advert }) => {
         <div>
           <div className={css.imageWrapper}>
             <img src={img} alt="" className={css.itemCard} />
-            <button type="button" className={css.favoriteBtn}>
-              <FavoriteBorder className={css.favoriteIcon} />
+            <button
+              type="button"
+              className={css.favoriteBtn}
+              onClick={toggleFavorite}
+            >
+              {isFavorite ? (
+                <Favorite className={css.favoriteIcon} />
+              ) : (
+                <FavoriteBorder className={css.favoriteIcon} />
+              )}
             </button>
           </div>
           <div className={css.itemText}>

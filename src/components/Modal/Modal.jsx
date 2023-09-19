@@ -1,9 +1,9 @@
-import React, { useEffect, useCallback } from "react";
-import css from "./Modal.module.css";
-import CloseIcon from "@mui/icons-material/Close";
-import { createPortal } from "react-dom";
+import React, { useEffect, useCallback } from 'react';
+import css from './Modal.module.css';
+import CloseIcon from '@mui/icons-material/Close';
+import { createPortal } from 'react-dom';
 
-const modalRoot = document.querySelector("#modal-root");
+const modalRoot = document.querySelector('#modal-root');
 
 const Modal = ({ isOpen, onClose, advert }) => {
   const {
@@ -26,7 +26,7 @@ const Modal = ({ isOpen, onClose, advert }) => {
 
   const close = useCallback(
     ({ target, currentTarget, code }) => {
-      if (target === currentTarget || code === "Escape") {
+      if (target === currentTarget || code === 'Escape') {
         onClose();
       }
     },
@@ -34,22 +34,22 @@ const Modal = ({ isOpen, onClose, advert }) => {
   );
 
   useEffect(() => {
-    document.addEventListener("keydown", close);
+    document.addEventListener('keydown', close);
 
-    return () => document.removeEventListener("keydown", close);
+    return () => document.removeEventListener('keydown', close);
   }, [close]);
 
   if (!isOpen) {
     return null;
   }
 
-  const parts = address.split(",");
-  const city = parts[1].trim();
-  const country = parts[2].trim();
-  const conditionsArray = rentalConditions.split("\n");
+  const parts = address.split(',');
+  const city = parts[1] ? parts[1].trim() : '';
+  const country = parts[2] ? parts[2].trim() : '';
+  const conditionsArray = rentalConditions.split('\n');
 
   function formatNumberWithCommas(number) {
-    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
   const formattedMileage = formatNumberWithCommas(mileage);
 
@@ -86,12 +86,12 @@ const Modal = ({ isOpen, onClose, advert }) => {
             <h3 className={css.subtitle}>Accessories and functionalities:</h3>
             <ul className={css.greyList}>
               <li className={css.greyItems}>
-                {accessories.map((accessory) => (
+                {accessories.map(accessory => (
                   <p key={accessory}>{accessory}</p>
                 ))}
               </li>
               <li className={css.greyItems}>
-                {functionalities.map((functionality) => (
+                {functionalities.map(functionality => (
                   <p key={functionality}>{functionality}</p>
                 ))}
               </li>
@@ -102,10 +102,10 @@ const Modal = ({ isOpen, onClose, advert }) => {
             <ul className={css.thirdBlockList}>
               {conditionsArray.map((condition, index) => (
                 <li key={index}>
-                  {condition.includes(":") ? (
+                  {condition.includes(':') ? (
                     <>
-                      {condition.split(":")[0]}:{" "}
-                      <span>{condition.split(":")[1]}</span>
+                      {condition.split(':')[0]}:{' '}
+                      <span>{condition.split(':')[1]}</span>
                     </>
                   ) : (
                     condition
