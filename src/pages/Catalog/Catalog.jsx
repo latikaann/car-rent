@@ -4,11 +4,13 @@ import css from './Catalog.module.css';
 import CatalogItem from '../../components/CatalogItem/CatalogItem';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
 import Sidebar from 'components/Sidebar/Sidebar';
+import Loader from '../../components/Loader/Loader'; // Імпортуйте компонент Loader
 
 const Catalog = () => {
   const [adverts, setAdverts] = useState([]);
   const [visibleAdverts, setVisibleAdverts] = useState(8);
   const [favoriteAdverts, setFavoriteAdverts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true); // Додайте стан для відстеження завантаження
 
   useEffect(() => {
     const apiUrl = 'https://6506dab33a38daf4803ec7a8.mockapi.io/api/cars';
@@ -17,9 +19,11 @@ const Catalog = () => {
       .get(apiUrl)
       .then(response => {
         setAdverts(response.data);
+        setIsLoading(false);
       })
       .catch(error => {
         console.error('Помилка при отриманні даних:', error);
+        setIsLoading(false);
       });
   }, []);
 
@@ -60,20 +64,24 @@ const Catalog = () => {
 
   return (
     <>
-      <Sidebar></Sidebar>
+      <Sidebar />
       <>
-        <ul className={css.cardsContainer}>
-          {adverts.slice(0, visibleAdverts).map((advert, index) => (
-            <CatalogItem
-              key={`${advert.make}-${advert.model}-${advert.year}`}
-              advert={advert}
-              toggleFavoriteHandler={toggleFavoriteHandler}
-              isFavorite={favoriteAdverts.some(fav => fav.id === advert.id)}
-              removeFromFavorites={removeFromFavorites}
-              isCatalog={true}
-            ></CatalogItem>
-          ))}
-        </ul>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <ul className={css.cardsContainer}>
+            {adverts.slice(0, visibleAdverts).map((advert, index) => (
+              <CatalogItem
+                key={`${advert.make}-${advert.model}-${advert.year}`}
+                advert={advert}
+                toggleFavoriteHandler={toggleFavoriteHandler}
+                isFavorite={favoriteAdverts.some(fav => fav.id === advert.id)}
+                removeFromFavorites={removeFromFavorites}
+                isCatalog={true}
+              ></CatalogItem>
+            ))}
+          </ul>
+        )}
 
         {visibleAdverts < adverts.length && <LoadMoreBtn onClick={loadMore} />}
       </>
