@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import css from './Catalog.module.css';
 import CatalogItem from '../../components/CatalogItem/CatalogItem';
-import shortid from 'shortid';
 import LoadMoreBtn from '../../components/LoadMoreBtn/LoadMoreBtn';
+import Sidebar from 'components/Sidebar/Sidebar';
 
 const Catalog = () => {
   const [adverts, setAdverts] = useState([]);
@@ -60,20 +60,23 @@ const Catalog = () => {
 
   return (
     <>
-      <ul className={css.cardsContainer}>
-        {adverts.slice(0, visibleAdverts).map((advert, index) => (
-          <CatalogItem
-            key={shortid.generate()}
-            advert={advert}
-            toggleFavoriteHandler={toggleFavoriteHandler}
-            isFavorite={favoriteAdverts.some(fav => fav.id === advert.id)}
-            removeFromFavorites={removeFromFavorites}
-            isCatalog={true}
-          ></CatalogItem>
-        ))}
-      </ul>
+      <Sidebar></Sidebar>
+      <>
+        <ul className={css.cardsContainer}>
+          {adverts.slice(0, visibleAdverts).map((advert, index) => (
+            <CatalogItem
+              key={`${advert.make}-${advert.model}-${advert.year}`}
+              advert={advert}
+              toggleFavoriteHandler={toggleFavoriteHandler}
+              isFavorite={favoriteAdverts.some(fav => fav.id === advert.id)}
+              removeFromFavorites={removeFromFavorites}
+              isCatalog={true}
+            ></CatalogItem>
+          ))}
+        </ul>
 
-      {visibleAdverts < adverts.length && <LoadMoreBtn onClick={loadMore} />}
+        {visibleAdverts < adverts.length && <LoadMoreBtn onClick={loadMore} />}
+      </>
     </>
   );
 };

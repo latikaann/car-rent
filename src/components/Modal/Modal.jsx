@@ -121,9 +121,15 @@ const Modal = ({ isOpen, onClose, advert }) => {
             </ul>
           </div>
         </div>
-        <button type="button" className={css.rentBtn}>
+
+        <a
+          href="tel:380730000000"
+          className={css.rentBtn}
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           Rental car
-        </button>
+        </a>
       </div>
     </div>,
     modalRoot

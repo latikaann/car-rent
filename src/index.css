@@ -9,6 +9,7 @@
   --blue-color-hover: rgba(11, 68, 205, 1);
   --grey-color: rgba(138, 138, 137, 1);
   --grey-transparent-color: rgba(18, 20, 23, 0.5);
+  --input-bg: rgba(247, 247, 251, 1);
 }
 
 *,

@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 }
 
 .modalContainer {
@@ -88,7 +89,7 @@
 }
 
 .greyItems p:not(:first-child)::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: -6px;
@@ -139,6 +140,10 @@
 }
 
 .rentBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   margin-top: 24px;
 
   width: 168px;
